@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Burger Fuel France</title>
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/normalize-3.0.3.min.css">
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/font-awesome-4.3.0.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!-- Feuilles de styles de l'application -->
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+       
+
+    <!-- Librairie jQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+    <!-- JavaScript de l'application -->
+    <script src="<?= $wwwUrl ?>/js/utilities.js"></script>
+</head>
+<body>
+
+<!-- En-tête commune -->
+<header>
+    <div class="top-header">
+        
+        <a href="<?= $requestUrl ?>">
+            <img src="<?= $wwwUrl ?>/images/burger-fuel-logo.png" height="100" width="300" alt="Burger fuel"> 
+        </a>
+    </div>
+    <div class="header-bottom">
+        <div class="header-left">
+            <?php if(!isset($_SESSION['connected']))
+            {?>
+                <a href="<?= $requestUrl ?>/registration">Registration</a>
+            <?php } else 
+            { ?>
+                <a href="<?= $requestUrl ?>/order">Order</a>
+                <a href="<?= $requestUrl ?>/add">Add product</a>
+            <?php } ?>
+        </div>
+        <div class="header-middle">
+            <h1>France</h1>
+        </div>
+        <div class="header-right">
+            <?php if(isset($_SESSION['connected']))
+            {?>
+                <p class="hello">Bonjour <?= htmlspecialchars($_SESSION['user']['firstname'] )?></p>
+                <a href="<?= $requestUrl ?>/disconnect" >Log out</a>
+            <?php  }else { 
+                 ?>
+                <a href="<?= $requestUrl ?>/login">Login</a>
+             <?php } ?>
+            
+        </div>
+    </div>
+    
+
+   
+    
+</header>
+
+<!-- Interface utilisateur -->
+<nav class="user-interface">
+    <ul class="link-list">
+        <!-- Code HTML/PHP à écrire -->
+    </ul>
+</nav>
+
+<main>
+    <section>
+        <!-- Affichage du template lié à la vue -->
+        <?php include $this->viewData['template'] ?>
+    </section>
+    
+</main>
+
+<!-- Pied de page commun -->
+<footer>
+    <div class="social">
+        <a href="https://www.facebook.com/burgerfuel" target="_blank"><img src="<?= $wwwUrl ?>/images/footer/facebook-icon.png" alt="facebook"></a>
+        <a href="https://www.instagram.com/burgerfuel/" target="_blank"><img src="<?= $wwwUrl ?>/images/footer/instagram-icon.png" alt="insta"></a>
+        <a href="https://www.youtube.com/user/burgerfuel" target="_blank"><img src="<?= $wwwUrl ?>/images/footer/youtube-icon.png" alt="youtube"></a>
+    </div>
+    <p>COPYRIGHT © 2021 BURGERFUEL. ALL RIGHTS RESERVED.TERMS & CONDITIONS PRIVACY POLICY</p>
+    
+</footer>
+
+<!-- Code principal JavaScript de l'application -->
+<script src="<?= $wwwUrl ?>/js/main.js"></script>
+
+</body>
+</html>

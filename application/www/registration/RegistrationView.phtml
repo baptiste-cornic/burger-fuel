@@ -1,0 +1,116 @@
+
+<h2>Create account</h2>
+
+    
+
+<form method="POST">
+    <fieldset>
+        
+        <div class="firstame">
+            <label for="firstname">firstname</label>
+            <input type="text" id="firstname" name="firstname" 
+            value="<?php if(isset($_POST['firstname'])) echo $_POST['firstname'];  ?>"/>
+        </div>
+        <div class="lastname">
+            <label for="lastname">lastname</label>
+            <input type="text" id="lastname" name="lastname"
+            value="<?php if(isset($_POST['lastname'])) echo $_POST['lastname'];  ?>"/>
+        </div>
+        <div class="birthday">
+            <label for="birthday">date of birth</label>
+            
+            <select name="day" id="day">
+                <?php
+                    for ($i = 1; $i <= 31; $i++)
+                    {
+                        if(isset($_POST['day']) && $_POST['day'] == $i)
+                        { ?>
+                            <option selected value="<?= $i ?>"> <?= $i ?></option>
+                       <?php }
+                       else{ ?>
+                           <option value="<?= $i ?>"> <?= $i ?></option>
+                        <?php }
+                    } ?>
+            </select>
+            <select name="month" id="month">
+                <?php 
+                $month = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre',
+                'Octobre', 'Novembre', 'Décembre'];
+                for($i = 0; $i < count($month) ; $i++)
+                { ?>
+                    <option 
+                    <?php if(isset($_POST['month']) && $_POST['month'] == $i ) echo 'selected' ?>
+                    value="<?= $i+1 ?>"><?= $month[$i] ?>
+                    </option>
+                <?php } ?>
+            </select>
+            <select name="year" id="year">
+                <?php
+                    for ($i = 2021; $i >= 1920; $i--)
+                    { 
+                         if(isset($_POST['year']) && $_POST['year'] == $i)
+                         { ?>
+                             <option selected value="<?= $i ?>"> <?= $i ?></option>
+                          <?php }
+                         else{ ?>
+                             <option value="<?= $i ?>"> <?= $i ?></option>
+                         <?php }
+                    }?>
+                        
+            </select>
+        </div>
+        
+        <div class="address">
+            <label for="address">address</label>
+            <input type="text" name="address" id="address"
+            value="<?php if(isset($_POST['address'])) echo $_POST['address'];  ?>">
+        </div>
+        <div class="city">
+            <label for="city">city</label>
+            <input type="text" name="city" id="city"
+            value="<?php if(isset($_POST['city'])) echo $_POST['city'];  ?>">
+        </div>
+        <div class="post_code">
+            <label for="post_code">post code</label>
+            <input type="text" name="post_code" id="post_code"
+            value="<?php if(isset($_POST['post_code'])) echo $_POST['post_code'];  ?>">
+        </div>
+        <div class="country">
+            <label for="country">country</label>
+            <input type="text" name="country" id="country"
+            value="<?php if(isset($_POST['country'])) echo $_POST['country'];  ?>">
+        </div>
+        <div class="phone">
+            <label for="phone">phone</label>
+            <input type="text" name="phone" id="phone"
+            value="<?php if(isset($_POST['phone'])) echo $_POST['phone'];  ?>">
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="email">
+            <label for="email">email</label>
+            <input type="text" name="email" id="email"
+            value="<?php if(isset($_POST['email'])) echo $_POST['email'];  ?>"/>
+        </div>
+        <div class="password">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password"/>
+        </div>
+    </fieldset>
+    <button id="btn">Save</button>
+    
+</form>
+<?php if(isset($user_array))
+{ ?>
+    <div class="mistake">
+        <p>Vous avez <?= count($user_array) ?> erreur</p>
+        <?php  
+        for($i=0; $i < count($user_array); $i++){ ?>
+            <p> <?= $user_array[$i] ?></p>
+         <?php } ?>
+    </div>
+<?php }?>
+
+<script src="<?= $wwwUrl ?>/js/formvalidation.js"></script>
+
+

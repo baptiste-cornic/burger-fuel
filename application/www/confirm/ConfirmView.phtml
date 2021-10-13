@@ -1,0 +1,46 @@
+<h2>Check your order</h2>
+<div class="user-information">
+   <p> <?= htmlspecialchars($_SESSION['user']['lastname']) ?> <?= htmlspecialchars($_SESSION['user']['firstname']) ?></p> 
+   <p> <?= htmlspecialchars($_SESSION['user']['address']) ?></p>
+   <p> <?= htmlspecialchars($_SESSION['user']['city']) ?> <?= htmlspecialchars($_SESSION['user']['post_code']) ?></p>
+   <p> <?= htmlspecialchars($_SESSION['user']['phone']) ?></p>
+   <p> <?= htmlspecialchars($_SESSION['user']['email']) ?></p>
+</div>
+<div class="final-order">
+    <table class="bill">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>quantity</th>
+                <th>prix unitaire</th>
+                <th>prix total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            for($i = 0; $i < count($_SESSION['order']); $i++)
+            { ?>
+            <tr>
+                <td><?= htmlspecialchars($_SESSION['order'][$i]['productName']) ?></td>
+                <td><?= htmlspecialchars($_SESSION['order'][$i]['quantity']) ?></td>
+                <td><?= htmlspecialchars($_SESSION['order'][$i]['price']) ?> €</td>
+                <td> <?= htmlspecialchars(intval($_SESSION['order'][$i]['quantity'])) * htmlspecialchars(intval($_SESSION['order'][$i]['price'] )) ?> € </td>
+            </tr>
+               <?php } ?>
+        </tbody>   
+        <tfoot>
+           <tr>
+               <td colspan="2"></td>
+               <td>Total :</td>
+               <td><?= $result ?> €</td>
+           </tr>
+           <tr>
+               <td colspan="4"><a href="<?= $requestUrl ?>/receipt" ><button class="confirm-order-btn">Confirm</button></a></td>
+           </tr>
+        </tfoot>
+    </table>
+    
+    
+   
+    
+</div>

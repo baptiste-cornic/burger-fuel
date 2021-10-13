@@ -1,0 +1,24 @@
+
+<h2>Log in</h2>
+
+<form method="POST">
+     <fieldset>
+        <div class="email">
+            <label for="email">email</label>
+            <input type="text" name="email" id="email"/>
+        </div>
+        <div class="password">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password"/>
+        </div>
+    </fieldset>
+    <button id="btn">Log in</button>
+</form>
+
+<?php if(isset($error))
+{ ?>
+    <div class="mistake">
+        <p><?= $error ?></p>
+        
+    </div>
+<?php }?>
